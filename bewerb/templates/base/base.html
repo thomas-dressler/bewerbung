@@ -1,0 +1,22 @@
+{% load static %}
+{% block html %}
+<!DOCTYPE html>
+<html>
+   {% block head %}
+       <head>
+          <meta charset="utf-8">
+          <title>Bewerbung Thomas Dreßler</title>
+          <link rel="stylesheet" type="text/css" href='{% static "css/bewerb.css" %}'>
+          <link rel="stylesheet" type="text/css" href='{% static "css/timeline.css" %}'>
+       </head>
+   {% endblock head %}
+   {% block body %}
+       <body>
+          <div id="content">
+             {% include 'base/includes/topbar.html' %}
+             {% block content %}{% endblock content %}
+          </div>
+       </body>
+   {% endblock body %}
+<footer class="footer text-center bottom"> 2022 &copy; Thomas Dreßler </footer>
+{% endblock html %}

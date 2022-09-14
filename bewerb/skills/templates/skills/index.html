@@ -1,0 +1,169 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="container-fluid align-items-center col-8">
+           <div class="text-center">
+              <h1>Fähigkeiten / Techstack</h1>
+           </div>
+           <hr>
+           <div class="row mt-4 justify-content-center">
+              <div class="card m-1 col-8">
+                 <h3 class="card-header">Programmiersprachen und Frameworks</h3>
+                 <div class="card-body">
+                    <h5 class="card-title">Programmiersprachen</h5>
+                    <h6 class="card-subtitle text-muted">nach Beliebtheit sortiert</h6>
+                 </div>
+                 <div class="card-body">
+                    <div class="col-12">
+                       {% for skill in skills %}
+                           {% if skill.langOrFw %}
+                               <div class="row">
+                                  <div class="col-2 align-self-center">
+                                      <img class="img-fluid" src="{% static "/img/logo/" %}{{ skill.logo }}" /></div>
+                                  <div class="col-2 align-self-center">{{ skill.name }}</div>
+                                  <div class="col-2 align-self-center">seit {{ skill.startDate|date:"Y" }}</div>
+                                  <div class="col-2 align-self-center">
+                                     <div class="progress">
+                                        <div class="progress-bar progress-bar-striped bg-success" style="width: {{ skill.skillLevel }}%;" role="progressbar"></div>
+                                     </div>
+                                  </div>
+                                  <div class="col-4 align-self-center g-0">{{ skill.shortDescription }}</div>
+                               </div>
+                               <hr>
+                           {% endif %}
+                       {% endfor %}
+                    </div>
+                 </div>
+                 <div class="card-body">
+                    <h5 class="card-title">Frameworks</h5>
+                    <h6 class="card-subtitle text-muted">nach Jahr sortiert</h6>
+                 </div>
+                 <div class="card-body">
+                    <div class="col-12">
+                       {% for skill in skills %}
+                           {% if skill.langOrFw is False%}
+                               <div class="row mb-1 text-md-center">
+                                  <div class="col-2 align-self-center">
+                                      <img class="img-fluid" src="{% static "/img/logo/" %}{{ skill.logo }}" /></div>
+                                  <div class="col-3 align-self-center">{{ skill.name }}</div>
+                                  <div class="col-3 align-self-center">seit {{ skill.startDate|date:"Y" }}</div>
+                                  <div class="col-3 align-self-center">
+                                     <div class="progress">
+                                        <div class="progress-bar progress-bar-striped bg-success" style="width: {{ skill.skillLevel }}%;" role="progressbar"></div>
+                                     </div>
+                                  </div>
+                               </div>
+                           {% endif %}
+                       {% endfor %}
+                    </div>
+                 </div>
+              </div>
+              <div class="card m-1 col-3 h-100">
+                 <h3 class="card-header">weitere Fähigkeiten</h3>
+                 <div class="card-body">
+                    <h5 class="card-title">weiterer Techstack</h5>
+                    <h6 class="card-subtitle text-muted">nicht sortiert</h6>
+                    <br>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">Git</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 55%; height: 50px;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">Docker</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 50%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">IntelliJ IDEs</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 70%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">MySQL/SQlite/PostgreSQL</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 70%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">API</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 75%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">CRM</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 60%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">Scrum</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 70%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="card-body">
+                    <h5 class="card-title">Sprachen</h5>
+                    <h6 class="card-subtitle text-muted">nach Kenntnisstand sortiert</h6>
+                    <br>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">Deutsch</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 100%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">Englisch</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 80%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">Schwedisch</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 25%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="row mt-1">
+                       <div class="col-6 align-self-center">Russisch</div>
+                       <div class="col-6 align-self-center">
+                          <div class="progress">
+                             <div class="progress-bar progress-bar-striped bg-success" style="width: 20%;" role="progressbar"></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="card-body">
+                    <h5 class="card-title">Anderes</h5>
+                 </div>
+              </div>
+           </div>
+        </div>
+    {% endif %}
+{% endblock content %}

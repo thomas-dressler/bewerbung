@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <section>
+       <div class="container col-8">
+          <h1 class="text-center">Referenzen und Beispielprojekte</h1>
+          <hr>
+          <br>
+          {% for ref in refs %}
+              <div class="card mb-2 border-secondary">
+                 <div class="card-header">{{ ref.title }}</div>
+                 <div class="card-body">
+                    <div class="row align-content-center">
+                       <div class="col-3 align-self-center"><img class="img-fluid card-img" src="{% static "/img/ref/" %}{{ ref.image }}" /></div>
+                       <div class="col-7">
+                          <h4 class="card-title">bei {{ ref.organisationName }}</h4>
+                          <p class="card-text">{{ ref.description }}</p>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="card-footer text-muted">
+                    genutzter Techstack: {% for tech in ref.techStack.filter %}<span class="badge bg-light">{{ tech }}</span> {% endfor %}
+                 </div>
+              </div>
+          {% endfor %}
+       </div>
+    </section>
+    {% endif %}
+{% endblock content %}

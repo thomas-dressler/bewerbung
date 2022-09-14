@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid align-items-center col-8">
+       <h1 class="mt-4 text-center">Bewerbung September 2022 Thomas Dreßler</h1>
+       {% if not user.is_authenticated %}
+           <h5 class="text-center fw-light">Für die detailierte Bewerbung loggen Sie sich bitte ein.</h5>
+           <hr>
+           <div class="">
+              {% if messages %}
+                  {% for message in messages %}
+                      <div class="alert alert-dismissible alert-danger">
+                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                         <strong>{{ message }}</strong>
+                      </div>
+                  {% endfor %}
+              {% endif %}
+           </div>
+           <form action="" method=POST>
+              {% csrf_token %}
+              <div class="row justify-content-center">
+                 <div class="col-4 mt-2">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username">
+                 </div>
+              </div>
+              <div class="row justify-content-center">
+                 <div class="col-4 mt-2">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                 </div>
+              </div>
+              <div class="row justify-content-center">
+                 <div class="col-1 mt-2 mb-2">
+                    <input type="submit" value="Login" class="btn btn-secondary">
+                 </div>
+              </div>
+           </form>
+       {% endif %}
+    </div>
+{% endblock content %}

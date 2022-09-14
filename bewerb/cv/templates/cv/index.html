@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="container col-8">
+           <h1 class="text-center">Lebenslauf</h1>
+           <hr>
+           <br>
+              <div class="main-timeline">
+                 {% for cve in cv %}
+                     <div class="timeline {% if forloop.counter|divisibleby:"2" %} right" {% else %} left" {% endif %} >
+                     <div class="card border-secondary">
+                        <div class="card-header">{{ cve.position }}</div>
+                        <div class="card-body">
+                           <h4 class="card-title">{{ cve.startDate|date:"m/Y"  }} - {{ cve.endDate|date:"m/Y"  }}</h4>
+                           <h6 class="card-subtitle mb-2 text-muted">{{ cve.headline }} bei {{ cve.organisationName }} in {{ cve.location }}</h6>
+                           <p class="card-text">{{ cve.descriptionText }}</p>
+                        </div>
+                     </div>
+                     </div>
+                 {% endfor %}
+              </div>
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,107 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="container col-8">
+           <h1 class="text-center">Bewerbung</h1>
+           <hr>
+           <br>
+              <div class="row justify-content-center">
+                     <div class="card m-1 col-8">
+                        <div class="card-header">Bewerbung zum {{ moti.jobPosition }}</div>
+                        <div class="card-body">
+                           <h4 class="card-title">{{ moti.assignedTo }},</h4>
+                           <p class="card-text">{{ moti.motivationText|linebreaks }}</p>
+                        </div>
+                     </div>
+                 <div class="card m-1 col-3">
+                    <div class="card-header">Über Mich</div>
+                    <div class="card-body">
+                       <h5 class="card-title text-decoration-underline">Allgemein</h5>
+                       <div class="row">
+                          <div class="col-12"><img class="img-fluid rounded" src="{% static "/img/profil.png" %}" /></div>
+                       </div>
+                       <div class="row mt-1">
+                          <div class="col-6">
+                             <p class="card-text fw-bold">Vorname</p>
+                          </div>
+                          <div class="col-6">
+                             <p class="card-text"></p>
+                          </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-6">
+                             <p class="card-text fw-bold">Nachname</p>
+                          </div>
+                          <div class="col-6">
+                             <p class="card-text"></p>
+                          </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-6">
+                             <p class="card-text fw-bold">Geburtstag</p>
+                          </div>
+                          <div class="col-6">
+                             <p class="card-text"></p>
+                          </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-6">
+                             <p class="card-text fw-bold">Geburtsort</p>
+                          </div>
+                          <div class="col-6">
+                             <p class="card-text"></p>
+                          </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-6">
+                             <p class="card-text fw-bold">wohnhaft in</p>
+                          </div>
+                          <div class="col-6">
+                             <p class="card-text"></p>
+                          </div>
+                       </div>
+                       <div class="mt-3">
+                          <h5 class="card-title text-decoration-underline">Höchster Bildungsabschluss</h5>
+                       </div>
+                       <div class="row text-center">
+                          <div class="col-12">
+                             <p class="card-text"></p>
+                          </div>
+                       </div>
+                       <div class="mt-3">
+                          <h5 class="card-title text-decoration-underline">Am Besten zu erreichen</h5>
+                       </div>
+                       <div class="row">
+                          <div class="col-12 text-center">
+                             <p class="card-text fw-bold">Telefon</p>
+                          </div>
+                          <div class="col-12 text-center">
+                             <p class="card-text"></p>
+                          </div>
+                       </div>
+                       <div class="row mt-1">
+                          <div class="col-12 text-center">
+                             <p class="card-text fw-bold">E-Mail</p>
+                          </div>
+                          <div class="col-12 text-center">
+                             <p class="card-text"></p>
+                          </div>
+                       </div>
+                       <div class="mt-3">
+                          <h5 class="card-title text-decoration-underline">Anschrift</h5>
+                       </div>
+                       <div class="row text-center">
+                          <div class="col-12">
+                             <p class="card-text"></p>
+                          </div>
+                          <div class="col-12">
+                             <p class="card-text"></p>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+        </div>
+    {% endif %}
+{% endblock content %}
